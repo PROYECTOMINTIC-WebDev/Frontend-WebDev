@@ -6,3 +6,6 @@ Este proyecto de Desarrollo de Software trata de crear un gestor de información
 
 ### Juan Diego Portillo.
 Soy estudiante de astronomía de la Universidad de Antioquia y para la primera semana del ciclo me corresponde el cargo de "Developer"
+
+### Julio Pinzón.
+Soy Julio Pinzón, trabajo en el negocio familiar y durante este ciclo, comenzare con el rol de Analista
