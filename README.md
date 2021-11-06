@@ -11,3 +11,5 @@ Soy estudiante de astronomía de la Universidad de Antioquia y para la primera s
 Soy Julio Pinzón, trabajo en el negocio familiar y durante este ciclo, comenzare con el rol de Analista
 ### Manuel Jose Guzman Guzman: 
 hola, soy  estudiante de ing de sistemas de informacion y por el momento  comenzare en el rol de adminsitrador de BD
+### Maria Alejandra Reales Echeverri.
+Soy estudiante de Ingenieria Industrial de la Universidad del Atlantico y comenzare en el rol de Product Owner
