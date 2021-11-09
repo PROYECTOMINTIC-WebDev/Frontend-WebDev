@@ -15,3 +15,5 @@ hola, soy  estudiante de ing de sistemas de informacion y por el momento  comenz
 Soy estudiante de Ingenieria Industrial de la Universidad del Atlantico y comenzare en el rol de Product Owner
 ### Adriana Smith Pico Cuadros
 Soy Ing. Industrial y comenzare en el rol de "Scrum Master" 
+### Diego Andres Florez Zabaleta 
+Soy estudiante de  9 semestre de Ing. de sistemas y comenzare en el rol de "Developer" 
