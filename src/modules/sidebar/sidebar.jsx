@@ -1,8 +1,8 @@
 import React from 'react'
 
-const sidebar = () => {
+const Sidebar = () => {
     return (
-        <div className="app flex h-full fixed w-44 flex-col bg-black rounded-r-3xl">
+        <div className="app flex h-full fixed w-44 flex-col divide-pink-700	 rounded-r-3xl">
 
       <div className="h-full mt-24 text-base justify-between flex flex-col ">
         <div>
@@ -20,4 +20,4 @@ const sidebar = () => {
     )
 }
 
-export default sidebar
+export default Sidebar;

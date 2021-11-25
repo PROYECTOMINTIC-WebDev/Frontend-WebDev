@@ -4,6 +4,7 @@ import Registro from './pages/Registro';
 import Admin from './pages/Admin';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./App.css";
+import Sidebar from './modules/sidebar/sidebar';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/sidebar" element={<Sidebar />} />
         </Routes>
     </BrowserRouter>
   );
