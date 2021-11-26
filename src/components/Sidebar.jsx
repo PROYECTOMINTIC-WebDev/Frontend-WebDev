@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 
 const SidebarLinks = () => {
   return (
-  <ul className='mt-12 ' >
-    <SidebarRoute to='/' title='Inicio' icon='fas fa-home'/>
-    <SidebarRoute to='/admin' title='Inicio' icon='fas fa-users '/>
-    <SidebarRoute to='/admin/usuarios' title='Inicio' icon='fas fa-users '/>
+  <ul className='mt-12 p ' >
+    <SidebarRoute to='/' title='Dashboard' icon='fas fa-home'/>
+    <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
+    <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
     
     
   </ul>
@@ -20,7 +20,7 @@ const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
       <img src='logo192.png' alt='Logo' className='h-16' />
-      <span className='my-2 text-xl font-bold text-center'>Título de Mi Aplicación</span>
+      <span className='my-2 text-xl font-bold text-gray-300 text-center  '>Gestion de Proyectos</span>
     </div>
   );
 };
@@ -31,7 +31,7 @@ const Sidebar = () => {
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full  '>
       {/* Sidebar starts */}
 
-      <div className='sidebar hidden md:flex bg-black'>
+      <div className='sidebar hidden md:flex bg-gray-700'>
         <div className='px-8'>
           <Logo />
           <SidebarLinks />
@@ -65,21 +65,21 @@ const ResponsiveSidebar = () => {
 
 const SidebarRoute = ({ to, title, icon }) => {
   return (
-    <li>
+   
       <NavLink
         to={to}
         className={({ isActive }) =>
           isActive
             ? 'sidebar-route text-white bg-indigo-700'
-            : 'sidebar-route text-gray-900 hover:text-white hover:bg-indigo-400'
+            : 'sidebar-route text-gray-900 hover:text-white hover:bg-indigo-300 focus:shadow-outlin'
         }
       >
         <div className='flex items-center'>
-          <i className={icon} />
-          <span className='text-sm  ml-2'>{title}</span>
+          <i  className={`${icon} w-8`} />
+          <span className='text-sm  ml-2 pb-4  pt-4'>{title}</span>
         </div>
       </NavLink>
-    </li>
+   
   );
 };
 
