@@ -1,7 +1,9 @@
-import React from "react";
+
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 const Dropdown = ({ label, name, defaultValue = '', required, options }) => {
+
     const [selectedValue, setSelectedValue] = useState(defaultValue);
     const optionsSelect = [['', 'Seleccione una opción', true], ...Object.entries(options)];
     useEffect(() => {

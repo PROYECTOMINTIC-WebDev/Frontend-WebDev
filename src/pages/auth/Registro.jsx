@@ -3,7 +3,9 @@ import Input from '../../components/Input'
 import ButtonLoading from '../../components/ButtonLoading'
 import useFormData from '../../hook/useFormData'
 import { Link } from 'react-router-dom';
-// import { Enum_Rol } from 'utils/enums';
+import Dropdown from '../../components/Dropdown';
+import { Enum_Rol } from '../../utils/enums';
+
 
 const Registro = () => {
 
@@ -22,7 +24,7 @@ const Registro = () => {
           <Input label='Nombre:' name='nombre' type='text' required />
           <Input label='Apellido:' name='apellido' type='text' required />
           <Input label='Documento:' name='identificacion' type='text' required />
-          {/* <DropDown label='Rol deseado:' name='rol' required={true} options={Enum_Rol} /> */}
+          <Dropdown label='Rol deseado:' name='rol' required={true} options={Enum_Rol} />
           <Input label='Correo:' name='correo' type='email' required />
           <Input label='Contraseña:' name='password' type='password' required />
         </div>
