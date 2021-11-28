@@ -24,7 +24,7 @@ const Registro = () => {
           <Input label='Nombre:' name='nombre' type='text' required />
           <Input label='Apellido:' name='apellido' type='text' required />
           <Input label='Documento:' name='identificacion' type='text' required />
-          <Dropdown label='Rol deseado:' name='rol' required={true} options={Enum_Rol} />
+          <Dropdown label='Rol deseado:' name='rol' required={true} options={Enum_Rol} /> 
           <Input label='Correo:' name='correo' type='email' required />
           <Input label='Contraseña:' name='password' type='password' required />
         </div>
