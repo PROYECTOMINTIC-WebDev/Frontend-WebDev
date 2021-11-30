@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const SidebarLinks = () => {
   return (
   <ul className='mt-12 p ' >
-    <SidebarRoute to='/' title='Dashboard' icon='fas fa-home'/>
+    <SidebarRoute to='/' title='Dashboard' icon='fas fa-home' />
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
     
@@ -19,7 +19,7 @@ const SidebarLinks = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo192.png' alt='Logo' className='h-16' />
+      <img src='logo.png' alt='Logo' className='h-16' />
       <span className='my-2 text-xl font-bold text-gray-300 text-center  '>Gestion de Proyectos</span>
     </div>
   );
