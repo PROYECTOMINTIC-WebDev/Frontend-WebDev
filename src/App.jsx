@@ -22,7 +22,7 @@ import EditarUsuario from "./pages/usuarios/editar";
 
 
 const client = new ApolloClient({
-  uri:'http://192.168.100.121:4000/graphql',
+  uri:'http://localhost:4000/graphql',
   
   cache: new InMemoryCache()
 });
