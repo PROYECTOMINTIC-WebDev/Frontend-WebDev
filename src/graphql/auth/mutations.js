@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const REGISTRO = gql`
+const REGISTRO = gql `
 
 mutation Mutation(
     $nombre: String!,
@@ -21,9 +21,15 @@ mutation Mutation(
         error
      }
         
-      
-        
     }
 
 `;
-export{REGISTRO}
+
+const LOGIN = gql `
+mutation Login($correo: String!, $password: String!) {
+  login(correo: $correo, password: $password) {
+    token
+  }
+}
+`
+export { REGISTRO, LOGIN }
