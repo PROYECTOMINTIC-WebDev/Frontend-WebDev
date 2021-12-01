@@ -19,16 +19,13 @@ import {
  */
 import UserIndex from "./pages/usuarios/userIndex";
 import EditarUsuario from "./pages/usuarios/editar";
-
+import Dashboard from "./pages/admin/dashboard";
 
 const client = new ApolloClient({
-  uri:'http://192.168.100.121:4000/graphql',
+  uri:'http://localhost:4000/graphql',
   
   cache: new InMemoryCache()
 });
-
-
-
 
 function App() {
   return (
@@ -37,9 +34,10 @@ function App() {
     <BrowserRouter>
       <Routes>
       //ruta privada de administrador
-        <Route path="/" element={<PrivateLayout />}>
+        <Route path="/admin" element={<PrivateLayout />}>
           
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/Dashboard" element={<Dashboard />} />
         <Route path="/admin/usuarios" element={<UserIndex />} />
         <Route path="/admin/usuarios/editar/:_id" element={<EditarUsuario />} />
 

@@ -32,7 +32,7 @@ const Registro = () => {
     if (dataMutation) {
       if (dataMutation.registro.token) {
         localStorage.setItem('token',dataMutation.registro.token)
-        navigate('/');
+        navigate('/admin/Dashboard');
       }
     }
   }, [dataMutation]);
