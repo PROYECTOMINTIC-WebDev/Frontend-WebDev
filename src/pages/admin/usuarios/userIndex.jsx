@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { from, useQuery } from '@apollo/client'
-import { GET_USUARIOS } from '../../graphql/usuarios/queries'
+import { GET_USUARIOS } from '../../../graphql/usuarios/queries'
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 const UserIndex = () => {

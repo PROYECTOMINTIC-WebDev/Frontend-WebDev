@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { from, useQuery } from '@apollo/client'
-import { GET_USUARIOS } from '../../graphql/usuarios/queries';
+import { GET_USUARIOS } from '../../../graphql/usuarios/queries';
 
 const EditarUsuario = () => {
 const {_id} = useParams();
