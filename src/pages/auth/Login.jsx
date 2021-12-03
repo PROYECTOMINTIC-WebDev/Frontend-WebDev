@@ -9,6 +9,7 @@ import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
 import { Icons } from "react-toastify";
 
+
 const Login = () => {
   const navigate = useNavigate();
   const { setToken } = useAuth();
@@ -38,18 +39,20 @@ const Login = () => {
 
   return (
     <div className="flex  items-center justify-center w-full h-full">
-      <div className=" bg-black w-6/12  relative mr-72 ml-25 h-full object-center img_login "></div>
-      <div className="w-3/12 mr-80">
-        <i class="fas fa-drafting-compass text-indigo-500 ml-24 text-5xl"></i>
-        <h1 className=" text-gray-900 text-center m-5 text-3xl FuzzyBubbles font-black ">
+      <div className=" flex bg-black bg-hero-pattern bg-cover w-6/12 relative h-full  ">
+        
+      </div>
+      <div className="w-3/12  relativeh-full mr-80 ml-32">
+        <i class="fas fa-drafting-compass text-indigo-500 ml-60 text-5xl"></i>
+        <h1 className=" text-gray-900 text-center m-5 text-3xl FuzzyBubbles font-black ml-36">
           Prisma Lab
         </h1>
 
-        <h1 className="text-xl font-bold text-gray-900 text-center ">
+        <h1 className="text-xl font-bold text-gray-900 text-center ml-32">
           Iniciar sesión
         </h1>
         <form
-          className="flex flex-col"
+          className="flex flex-col ml-32"
           onSubmit={submitForm}
           onChange={updateFormData}
           ref={form}
@@ -67,9 +70,9 @@ const Login = () => {
             text="Iniciar Sesión"
           />
         </form>
-        <span className='ml-6 '>¿No tienes una cuenta?</span>
+        <span className='ml-40 '>¿No tienes una cuenta?</span>
         <Link to="/auth/registro">
-          <span className="text-blue-700 ml-16 ">Regístrate</span>
+          <span className="text-blue-700 ml-52 ">Regístrate</span>
         </Link>
       </div>
     </div>

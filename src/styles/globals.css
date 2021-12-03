@@ -7,12 +7,11 @@
   }
 
   .img_login{
-
+    display: flex;
     background-image: url(/src/images/img_login.svg);
     font-family: 'Fuzzy Bubbles', cursive;
   }
  
  .FuzzyBubbles{
-    background-image: url(/src/images/img_login.svg);
     font-family: 'Fuzzy Bubbles', cursive;
   }
