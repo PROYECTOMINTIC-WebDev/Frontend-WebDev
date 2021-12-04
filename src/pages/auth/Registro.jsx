@@ -32,7 +32,7 @@ const Registro = () => {
     if (dataMutation) {
       if (dataMutation.registro.token) {
         setToken(dataMutation.registro.token)
-        navigate('/admin/Dashboard');
+        navigate('/auth/login');
       }
     }
   }, [dataMutation]);

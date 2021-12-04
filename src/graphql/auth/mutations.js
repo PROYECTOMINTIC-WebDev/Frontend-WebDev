@@ -31,5 +31,17 @@ mutation Login($correo: String!, $password: String!) {
     token
   }
 }
+
+
 `
-export { REGISTRO, LOGIN }
+const REFRESH_TOKEN = gql `
+mutation RefreshToken {
+  refreshToken {
+    token
+    error
+    
+  }
+}
+
+`
+export { REGISTRO, LOGIN, REFRESH_TOKEN }

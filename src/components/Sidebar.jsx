@@ -1,19 +1,41 @@
 
 import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
-
+import { useAuth } from '../context/authContext';
+import PrivateComponent from './PrivateComponent';
 const SidebarLinks = () => {
   return (
   <ul className='mt-12 p ' >
+    <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/Dashboard' title='Dashboard' icon='fas fa-home' />
+    </PrivateComponent>
+    <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
+    </PrivateComponent>
     <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
-    
+    <Logout/>
     
   </ul>
   );
 };
 
+const Logout = () => {
+  const { setToken } = useAuth();
+  const deleteToken = () => {
+    console.log('eliminar token');
+    setToken('');
+  };
+  return (
+    <li onClick={() => deleteToken()}>
+      <NavLink to='/auth/login' className='sidebar-route text-red-700'>
+        <div className='flex items-center'>
+          <i className='fas fa-sign-out-alt' />
+          <span className='text-sm  ml-2'>Cerrar Sesión</span>
+        </div>
+      </NavLink>
+    </li>
+  );
+};
 
 
 const Logo = () => {

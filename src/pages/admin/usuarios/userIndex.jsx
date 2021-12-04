@@ -3,6 +3,7 @@ import { from, useQuery } from '@apollo/client'
 import { GET_USUARIOS } from '../../../graphql/usuarios/queries'
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import PrivateRoute from '../../../components/PrivateRoute';
 const UserIndex = () => {
     const {data,error,loading} = useQuery(GET_USUARIOS)
 
@@ -73,6 +74,7 @@ useEffect(() => {
           </h1>
       </div>
     </div>
+   
   );
  
         };
