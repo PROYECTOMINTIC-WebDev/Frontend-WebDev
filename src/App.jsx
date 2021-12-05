@@ -76,7 +76,7 @@ function App() {
         rol:decoded.rol,
         correo:decoded.correo
       })
-      console.log("userData en obj",userData)
+      console.log("userData en obj",decoded)
     }
 
   }, [authToken])

@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 //este es el template de grahpql
 const GET_USUARIOS = gql `
 query Usuario {
-  Usuario {
+  Usuarios {
     _id
     nombre
     apellido

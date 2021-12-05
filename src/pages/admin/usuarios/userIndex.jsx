@@ -4,8 +4,11 @@ import { GET_USUARIOS } from '../../../graphql/usuarios/queries'
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../../../components/PrivateRoute';
+import { REFRESH_TOKEN } from '../../../graphql/auth/mutations';
 const UserIndex = () => {
-    const {data,error,loading} = useQuery(GET_USUARIOS)
+    const {data,error,loading} = useQuery(GET_USUARIOS,
+      {refetchQueries:[{query:REFRESH_TOKEN}]}
+      )
 
     useEffect(() => {
         console.log("data servidor",data);
@@ -40,7 +43,7 @@ useEffect(() => {
         <tbody>
           {data&&
           
-          data.Usuario.map((u) => {
+          data.Usuarios.map((u) => {
             return (
             <tr  className="text-center" key={u._id}>
                 
