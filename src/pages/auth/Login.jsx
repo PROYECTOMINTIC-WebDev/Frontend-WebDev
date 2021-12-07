@@ -69,6 +69,8 @@ const Login = () => {
             loading={mutationLoading}
             text="Iniciar Sesión"
           />
+
+         
         </form>
         <span className='ml-40 '>¿No tienes una cuenta?</span>
         <Link to="/auth/registro">

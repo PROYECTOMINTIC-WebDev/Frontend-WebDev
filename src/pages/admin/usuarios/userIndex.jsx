@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../../../components/PrivateRoute';
 import { REFRESH_TOKEN } from '../../../graphql/auth/mutations';
+import NavBarFull from '../../../components/NavbarTodo';
 const UserIndex = () => {
     const {data,error,loading} = useQuery(GET_USUARIOS,
       {refetchQueries:[{query:REFRESH_TOKEN}]}
@@ -26,8 +27,12 @@ useEffect(() => {
         cargando.....
     </div>
     return (
-        
+        <>
+         <NavBarFull   titulo="Usuarios :"  subtitulo="Lista de Usuarios"/>
+  
             <div className="flex justify-center w-10/12">
+                     
+
       <table className="table">
         <thead>
           <tr>
@@ -77,7 +82,7 @@ useEffect(() => {
           </h1>
       </div>
     </div>
-   
+    </>
   );
  
         };

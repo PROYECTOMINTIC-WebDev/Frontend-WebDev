@@ -5,6 +5,11 @@ import { useAuth } from '../context/authContext';
 import PrivateComponent from './PrivateComponent';
 const SidebarLinks = () => {
   return (
+  
+ 
+    <>
+   <div>
+      
   <ul className='mt-12 p ' >
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/Dashboard' title='Dashboard' icon='fas fa-home' />
@@ -13,24 +18,27 @@ const SidebarLinks = () => {
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     </PrivateComponent>
     <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
-    <Logout/>
+  
     
   </ul>
+  </div>
+  <Logout/>
+  </>
   );
 };
 
 const Logout = () => {
   const { setToken } = useAuth();
   const deleteToken = () => {
-    console.log('eliminar token');
+ 
     setToken('');
   };
   return (
-    <li onClick={() => deleteToken()}>
-      <NavLink to='/auth/login' className='sidebar-route text-red-700'>
+    <li onClick={() => deleteToken()}  className="w-full bottom-0">
+      <NavLink to='/auth/login' className='w-full bottom-0  b-0 sidebar-route text-gray-500 '>
         <div className='flex items-center'>
           <i className='fas fa-sign-out-alt' />
-          <span className='text-sm  ml-2'>Cerrar Sesión</span>
+          <span className='text-sm  ml-2   w-full  bottom-0'>Cerrar Sesión</span>
         </div>
       </NavLink>
     </li>
@@ -41,7 +49,7 @@ const Logout = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logo.png' alt='Logo' className='h-16' />
+     {/*  <img  alt='Logo' className='h-16' /> */}
       <span className='my-2 text-xl font-bold text-gray-300 text-center  '>Gestion de Proyectos</span>
     </div>
   );
@@ -50,10 +58,10 @@ const Logo = () => {
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   return (
-    <div className='flex flex-col md:flex-row flex-no-wrap md:h-full  '>
+    <div className='flex flex-col md:flex-row flex-no-wrap md:h-full w-44'>
       {/* Sidebar starts */}
 
-      <div className='sidebar hidden md:flex bg-gray-700'>
+      <div className='sidebar hidden md:flex bg-black rounded-r-3xl text-gray-600  '>
         <div className='px-8'>
           <Logo />
           <SidebarLinks />
@@ -93,7 +101,7 @@ const SidebarRoute = ({ to, title, icon }) => {
         className={({ isActive }) =>
           isActive
             ? 'sidebar-route text-white bg-indigo-700'
-            : 'sidebar-route text-gray-900 hover:text-white hover:bg-indigo-300 focus:shadow-outlin'
+            : 'sidebar-route  hover:text-white hover:bg-indigo-300 focus:shadow-outlin'
         }
       >
         <div className='flex items-center'>

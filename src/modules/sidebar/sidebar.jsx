@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sidebar = () => {
     return (
-        <div className="app flex h-full fixed w-44 flex-col divide-pink-700	 rounded-r-3xl">
+        <div className="bg-black app flex h-full fixed w-44 flex-col divide-pink-700	 rounded-r-3xl">
 
       <div className="h-full mt-24 text-base justify-between flex flex-col ">
         <div>

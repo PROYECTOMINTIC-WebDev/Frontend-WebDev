@@ -8,6 +8,7 @@ import Sidebar from "./modules/sidebar/sidebar";
 import PrivateLayout from "./layout/PrivateLayout";
 import AuthLayout from "./layout/AuthLayout";
 import Registro from "./pages/auth/Registro";
+import '@themesberg/flowbite';
 import {
   ApolloClient,
   InMemoryCache,
@@ -29,10 +30,12 @@ import { Token } from "graphql";
 import jwt_decode from 'jwt-decode';
 import { UserContext } from "./context/userContext";
 import PrivateRoute from "./components/PrivateRoute";
-
+import PublicLayout from "./layout/PublicLayout";
+import Navbar from "./components/Navbar";
+<script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://192.168.100.121:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -78,8 +81,13 @@ function App() {
       })
       console.log("userData en obj",decoded)
     }
+    if(userData){
+      console.log("difgnjh",userData)
 
+    }
   }, [authToken])
+
+
   return (
    <ApolloProvider  client={client}>
    <AuthContext.Provider value={{authToken,setauthToken,setToken}} >
@@ -100,10 +108,14 @@ function App() {
         
         />
         <Route path="/admin/usuarios/editar/:_id" element={<EditarUsuario />} />
-
         </Route>
 
-        <Route path="" element={<Index />} />
+        {/* RUTAS PUBLICAS  */}
+        <Route path="/" element={<PublicLayout />}>
+
+        <Route path="/" element={<Index />} />
+        </Route>
+        
      {/*    <Route path="/login" element={<Login />} /> */}
         <Route path="/registro" element={<Registro />} />
       {/*   <Route path="/admin" element={<Admin />} /> */}
