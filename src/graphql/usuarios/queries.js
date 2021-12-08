@@ -16,16 +16,16 @@ query Usuario {
 }
 `
 const GET_USUARIO = gql `
-query UnUsuario($idUsuario: String!) {
-    UnUsuario(idUsuario: $idUsuario) {
-        _id
+query Usuario($_id: String!) {
+  Usuario(_id: $_id) {
+    _id
     nombre
     apellido
     correo
     identificacion
     estado
     rol
-    }
   }
+}
 `
 export { GET_USUARIOS, GET_USUARIO }

@@ -106,8 +106,7 @@ function App() {
        </PrivateRoute>
         }
         
-        />
-        <Route path="/admin/usuarios/editar/:_id" element={<EditarUsuario />} />
+        />  <Route path="/admin/usuarios/:_id" element={<UserIndex />} />
         </Route>
 
         {/* RUTAS PUBLICAS  */}
