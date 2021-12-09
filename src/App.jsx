@@ -1,6 +1,7 @@
 import Index from "./pages/index/Index";
 import Login from "./pages/auth/Login";
 import Admin from "./pages/admin/Admin";
+import ProjectForm from "./pages/proyectos/formulario";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './styles/globals.css';
 import Sidebar from "./modules/sidebar/sidebar";
@@ -32,10 +33,11 @@ import { UserContext } from "./context/userContext";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicLayout from "./layout/PublicLayout";
 import Navbar from "./components/Navbar";
+import Formulario from "./pages/proyectos/formulario";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
-  uri: 'http://192.168.100.121:4000/graphql',
+  uri: 'http://localhost:4000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -113,8 +115,9 @@ function App() {
         <Route path="/" element={<PublicLayout />}>
 
         <Route path="/" element={<Index />} />
+     
         </Route>
-        
+        <Route path="/formulario" element={<Formulario />} />   
      {/*    <Route path="/login" element={<Login />} /> */}
         <Route path="/registro" element={<Registro />} />
       {/*   <Route path="/admin" element={<Admin />} /> */}
