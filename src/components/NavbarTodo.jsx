@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { UserContext } from "../context/userContext";
 import { useUser } from "../context/userContext";
 
 const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
 
-    const {user} = useUser();
-    if(user){
-        console.log("estos son los usuarios de ",user);
+
+
+    const {userData} = useUser();
+    if(userData){
+        console.log("estos son los usuarios de tt",userData);
 
     }       
     console.log("estos son los usuarios de ");
-    const estado = ()=>{
-        if(user){
-            return user.nombre
+    useEffect(() => {
+        
+    }, [userData])
+    const estadoNombre = ()=>{
+        if(userData){
+            return userData.nombre
         }else{
         return   <></>
         }
     }
   const nombress = ()=>{
-    if(user){
-       return user.apellido
+    if(userData){
+       return userData.apellido
     }else{
      return   <></>
     }
@@ -30,7 +35,7 @@ const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
                 <nav className="flex items-center ">
                     <div>
                         <ul className="flex items-center justify-center text-center">
-                            <li className="text-black ml-1 mr-4 text-4xl font-semibold">{titulo}</li>
+                            <li className="text-black ml-1 mr-4 text-3xl font-semibold">{titulo}</li>
                             <li className="ml-1 mr-4 text-2xl font-semibold text-black ml-10">{subtitulo}</li>
                             <li className="ml-1 mr-4 text-2xl font-semibold ">{subtitulo2}</li>
                         </ul>
@@ -38,7 +43,7 @@ const NavBarFull = ({titulo, subtitulo,subtitulo2}) =>{
                 </nav>
             </div>
             <div className=" flex justify-end items-center m-2 w-1/3 h-full rounded-full  bg-bg-indigo-400">
-                <label className="w-max">  {nombress()}</label>
+                <label class="w-max  text-gray-500 text">  {estadoNombre()}  {nombress()}  </label>
                 <i class="far fa-user     border-gray-500   p-6    "></i>        
 {/*                         <img alt ="Foto" src="fas-fas-user" className="m-2  h-4/5  rounded-lg  bg-bg-indigo-400   flex-col-reverse" />
  */}            </div>

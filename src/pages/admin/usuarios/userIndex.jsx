@@ -84,13 +84,14 @@ const UserIndex = () => {
         <table className="table">
           <thead>
             <tr  scope="col" class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-wider dark:text-gray-400">
-              <th className="text-center">Id</th>
+        {/*       <th className="text-center">Id</th> */}
               <th className="pr-6">nombre </th>
               <th>Apellido</th>
 
               <th  class="text-center">correo</th>
               <th>Identificacion</th>
               <th  class="text-center">rol</th>
+              <th  class="text-center">estado</th>
               <th class="pl-5" >Acciones</th>
             </tr>
           </thead>
@@ -99,12 +100,13 @@ const UserIndex = () => {
               data.Usuarios.map((u) => {
                 return (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={u._id}>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white" >{u._id}</td>
+                    {/* <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white" >{u._id}</td> */}
                     <td  scope="col" class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-wider dark:text-gray-400">{u.nombre}</td>
                     <td>{u.apellido}</td>
                     <td>{u.correo}</td>
                     <td>{u.identificacion}</td>
                     <td  class="text-center">{u.rol}</td>
+                    <td>{Enum_EstadoUsuario[u.estado]}</td>
 
                     <td class="pl-6">
                     <i    class="fas fa-pen text-green-600 hover:text-green-400 cursor-pointer" onClick={()=> abrirModal(u._id)}></i>
