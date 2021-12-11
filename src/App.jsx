@@ -1,14 +1,7 @@
-import Index from "./pages/index/Index";
-import Login from "./pages/auth/Login";
-import Admin from "./pages/admin/Admin";
-import ProjectForm from "./pages/proyectos/formulario";
+//Funciones de React y estilos
+import { useState ,useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './styles/globals.css';
-/* import Adminusers from "./pages/admin/Adminusers"; */
-import PrivateLayout from "./layout/PrivateLayout";
-import AuthLayout from "./layout/AuthLayout";
-import Registro from "./pages/auth/Registro";
-import '@themesberg/flowbite';
+import jwt_decode from 'jwt-decode';
 import {
   ApolloClient,
   InMemoryCache,
@@ -17,24 +10,32 @@ import {
   /* useQuery,
   gql */
 } from "@apollo/client";
-/* import PrivateLayout from "./layout/PrivateLayout";
- */
 import { setContext } from '@apollo/client/link/context';
+import '@themesberg/flowbite';
+import './styles/globals.css';
+// import { Token } from "graphql";
 
-import UserIndex from "./pages/admin/usuarios/userIndex";
-import EditarUsuario from "./pages/admin/usuarios/editar";
-import Dashboard from "./pages/admin/dashboard";
+//Contextos y Layouts
 import { AuthContext } from "./context/authContext";
-import { useState ,useEffect} from "react";
-import { Token } from "graphql";
-import jwt_decode from 'jwt-decode';
 import { UserContext } from "./context/userContext";
 import PrivateRoute from "./components/PrivateRoute";
+import PrivateLayout from "./layout/PrivateLayout";
 import PublicLayout from "./layout/PublicLayout";
-import Navbar from "./components/Navbar";
-import IndexProyecto from "./pages/admin/proyectos";
+import AuthLayout from "./layout/AuthLayout";
+
+//Páginas
+import Index from "./pages/index/Index";
+import Login from "./pages/auth/Login";
+import Registro from "./pages/auth/Registro";
+import Admin from "./pages/admin/Admin";
+import UserIndex from "./pages/admin/usuarios/userIndex";
+import AdminIndex from "./pages/admin/AdminIndex";
 import IndexPerfil from "./pages/perfil";
-import Formulario from "./pages/proyectos/formulario";
+import IndexProyecto from "./pages/admin/proyectos";
+import FormularioProyectos from "./pages/admin/proyectos/formulario";
+// import EditarUsuario from "./pages/admin/usuarios/editar";
+// import ProjectForm from "./pages/proyectos/formulario";
+
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
@@ -92,50 +93,38 @@ function App() {
 
 
   return (
-   <ApolloProvider  client={client}>
-   <AuthContext.Provider value={{authToken,setauthToken,setToken}} >
-  <UserContext.Provider   value={{ userData, setUserData }}>
+    <ApolloProvider  client={client}>
+      <AuthContext.Provider value={{authToken,setauthToken,setToken}} >
+        <UserContext.Provider   value={{ userData, setUserData }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/admin" element= {<PrivateLayout/>}>
+                <Route path="/admin" element= {<Admin/>} />
+                <Route path="/admin/index" element= {<AdminIndex/>}/>
+                <Route path="/admin/perfil" element= {<IndexPerfil/>} />
+                <Route path="/admin/proyectos" element= {<IndexProyecto/>} />
+                <Route path="/admin/proyectos/editar" element={<FormularioProyectos/>} />   
+                <Route path="/admin/usuarios" element= {
+                <PrivateRoute  roleList={["ADMINISTRADOR"]}>
+                  <UserIndex />
+                </PrivateRoute>}/>  
+                <Route path="/admin/usuarios/:_id" element={<UserIndex />} />
+              </Route>
 
-    <BrowserRouter>
-      <Routes>
-      //ruta privada de administrador
-        <Route path="/admin" element={<PrivateLayout />}>
-          
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/Dashboard" element={<Dashboard />} />
-        <Route path="/admin/perfil" element={<IndexPerfil />} />
-        <Route path="/admin/proyectos" element={<IndexProyecto />} />
-        <Route path="/admin/usuarios" element={
-        <PrivateRoute  roleList={["ADMINISTRADOR"]}>
-        <UserIndex />
-       </PrivateRoute>
-        }
-        
-        />  <Route path="/admin/usuarios/:_id" element={<UserIndex />} />
-        </Route>
+              <Route path="/" element={<PublicLayout/>}>
+                <Route path="/" element={<Index />}/>
+              </Route>
 
-        {/* RUTAS PUBLICAS  */}
-        <Route path="/" element={<PublicLayout />}>
-
-        <Route path="/" element={<Index />} />
-     
-        </Route>
-        <Route path="/formulario" element={<Formulario />} />   
-     {/*    <Route path="/login" element={<Login />} /> */}
-        <Route path="/registro" element={<Registro />} />
-      {/*   <Route path="/admin" element={<Admin />} /> */}
-      //ruta de autenticacion de registro
-          <Route path='/auth' element={<AuthLayout />}>
-            <Route path='registro' element={<Registro />} />
-            <Route path='login' element={<Login />} />
-          </Route>
-
-      </Routes>
-    </BrowserRouter>
-
-    </UserContext.Provider>
-    </AuthContext.Provider>
-   </ApolloProvider>
+              <Route path="/registro" element={<Registro/>} />
+              <Route path='/auth' element={<AuthLayout/>}>
+                <Route path='registro' element={<Registro/>} />
+                <Route path='login' element={<Login/>} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </AuthContext.Provider>
+    </ApolloProvider>
   );
 }
 
