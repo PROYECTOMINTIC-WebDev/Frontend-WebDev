@@ -17,12 +17,16 @@ const SidebarLinks = () => {
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     </PrivateComponent>
+    <SidebarRoute to='/admin/proyectos' title='Proyectos' icon='fas fa-address-card'/>
     <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
+    <SidebarRoute to='/admin/perfil' title='Perfil' icon='fas fa-users '/>
   
     
   </ul>
   </div>
-  <Logout/>
+ <div class="">
+ <Logout/>
+ </div>
   </>
   );
 };
@@ -34,14 +38,14 @@ const Logout = () => {
     setToken('');
   };
   return (
-    <li onClick={() => deleteToken()}  className="w-full bottom-0">
-      <NavLink to='/auth/login' className='w-full bottom-0  b-0 sidebar-route text-gray-500 '>
-        <div className='flex items-center'>
+    <div onClick={() => deleteToken()}  className=" absolute bottom-11   hover:bg-gray-400  rounded-lg p-2">
+      <NavLink to='/auth/login' className='  text-gray-500 '>
+        <div className=''>
           <i className='fas fa-sign-out-alt' />
-          <span className='text-sm  ml-2   w-full  bottom-0'>Cerrar Sesión</span>
+          <span className='text-sm  ml-2   '>Cerrar Sesión</span>
         </div>
       </NavLink>
-    </li>
+    </div>
   );
 };
 
@@ -61,13 +65,13 @@ const Sidebar = () => {
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full w-44'>
       {/* Sidebar starts */}
 
-      <div className='sidebar hidden md:flex bg-black rounded-r-3xl text-gray-600  '>
+      <div className='sidebar hidden md:flex bg-black rounded-r-3xl text-gray-400  '>
         <div className='px-8'>
           <Logo />
           <SidebarLinks />
         </div>
       </div>
-      <div className='flex md:hidden w-full justify-between bg-gray-800 p-2 text-white'>
+      <div className='flex md:hidden w-full justify-between bg-gray-800 p-2 text-green'>
         <i className={`fas fa-${open ? 'times' : 'bars'}`} onClick={() => setOpen(!open)} />
         <i className='fas fa-home' />
       </div>
@@ -100,7 +104,7 @@ const SidebarRoute = ({ to, title, icon }) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-indigo-700'
+            ? ' text-white rounded-lg  '
             : 'sidebar-route  hover:text-white hover:bg-indigo-300 focus:shadow-outlin'
         }
       >

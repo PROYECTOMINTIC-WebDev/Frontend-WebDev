@@ -49,16 +49,16 @@ if(loadingMutation  || loadingAuth) return <div>
     navigate('/auth/login')
   } */
   return (
-    <div className='flex flex-col md:flex-row flex-no-wrap h-screen '>
+    <div className='flex flex-col md:flex-row flex-no-wrap h-screen bg-white-500'>
     <Sidebar />
     
-    <div className='flex w-full h-full '>
-      <div className='w-full h-full  overflow-y-scroll '>
-       
+    <div className='flex w-full h-full  overflow-hidden '>
+    
+    <div className='w-full h-full   '>
         <Outlet />
 
 
-
+       
       </div>
       <ToastContainer/>
     </div>

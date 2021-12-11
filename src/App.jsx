@@ -3,7 +3,6 @@ import Login from "./pages/auth/Login";
 import Admin from "./pages/admin/Admin";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './styles/globals.css';
-import Sidebar from "./modules/sidebar/sidebar";
 /* import Adminusers from "./pages/admin/Adminusers"; */
 import PrivateLayout from "./layout/PrivateLayout";
 import AuthLayout from "./layout/AuthLayout";
@@ -32,6 +31,8 @@ import { UserContext } from "./context/userContext";
 import PrivateRoute from "./components/PrivateRoute";
 import PublicLayout from "./layout/PublicLayout";
 import Navbar from "./components/Navbar";
+import IndexProyecto from "./pages/admin/proyectos";
+import IndexPerfil from "./pages/perfil";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
@@ -100,6 +101,8 @@ function App() {
           
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/Dashboard" element={<Dashboard />} />
+        <Route path="/admin/perfil" element={<IndexPerfil />} />
+        <Route path="/admin/proyectos" element={<IndexProyecto />} />
         <Route path="/admin/usuarios" element={
         <PrivateRoute  roleList={["ADMINISTRADOR"]}>
         <UserIndex />
@@ -118,7 +121,6 @@ function App() {
      {/*    <Route path="/login" element={<Login />} /> */}
         <Route path="/registro" element={<Registro />} />
       {/*   <Route path="/admin" element={<Admin />} /> */}
-        <Route path="/sidebar" element={<Sidebar />} />
       //ruta de autenticacion de registro
           <Route path='/auth' element={<AuthLayout />}>
             <Route path='registro' element={<Registro />} />
