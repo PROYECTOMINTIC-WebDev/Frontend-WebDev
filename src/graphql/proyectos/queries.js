@@ -15,8 +15,6 @@ query Proyectos {
     }
   }
 }
-
-
 `
 
 export default PROYECTOS;

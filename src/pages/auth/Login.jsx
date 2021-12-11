@@ -43,16 +43,17 @@ const Login = () => {
   return (
     <div className="flex  items-center justify-center w-full h-full">
       <div className=" flex bg-black bg-hero-pattern bg-cover w-6/12 relative h-full  ">
-        
       </div>
-      <div className="w-3/12  relativeh-full mr-80 ml-32">
-        <i class="fas fa-drafting-compass text-indigo-500 ml-60 text-5xl"></i>
-        <h1 className=" text-gray-900 text-center m-5 text-3xl FuzzyBubbles font-black ml-36  flex flex-justify-between">
-          WebDev Developers
+      <div className="w-3/12 relativeh-full mr-80 ml-32">
+
+        {/* <i className ="fas fa-drafting-compass text-indigo-500 text-5xl text-center"></i> */}
+        <h1 className= "text-gray-900 text-center m-5 text-3xl FuzzyBubbles font-black ml-36  flex flex-justify-between">
+          Gestión de Proyectos
+          WebDev
         </h1>
 
         <h1 className="text-xl font-bold text-gray-900 text-center ml-32">
-          Iniciar sesión
+          Iniciar Sesión
         </h1>
         <form
           className="flex flex-col ml-32"
@@ -78,7 +79,7 @@ const Login = () => {
           <ButtonLoading
             disabled={Object.keys(formData).length === 0}
             loading={mutationLoading}
-            text="Iniciar Sesión"
+            text="Regístrate"
           />
         
        

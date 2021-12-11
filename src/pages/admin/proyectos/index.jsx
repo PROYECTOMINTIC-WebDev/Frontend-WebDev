@@ -267,13 +267,13 @@ const FormEditProyecto = ({ _id }) => {
 
   useEffect(() => {
     if (dataMutation) {
-      toast.success('Estado Actualizado con Exito');
+      toast.success('Estado actualizado con éxito');
     }
   }, [dataMutation]);
 
   useEffect(() => {
     if (mutationError) {
-      toast.error('No se pudo Actualizar el Estado');
+      toast.error('No se pudo actualizar el estado del proyecto');
     }
 
    

@@ -24,17 +24,16 @@ import PublicLayout from "./layout/PublicLayout";
 import AuthLayout from "./layout/AuthLayout";
 
 //Páginas
-import Index from "./pages/index/Index";
+import Index from "./pages/Index";
 import Login from "./pages/auth/Login";
 import Registro from "./pages/auth/Registro";
 import Admin from "./pages/admin/Admin";
+import IndexPerfil from "./pages/perfil";
 import UserIndex from "./pages/admin/usuarios/userIndex";
 import AdminIndex from "./pages/admin/AdminIndex";
-import IndexPerfil from "./pages/perfil";
 import IndexProyecto from "./pages/admin/proyectos";
 import FormularioProyectos from "./pages/admin/proyectos/formulario";
 // import EditarUsuario from "./pages/admin/usuarios/editar";
-// import ProjectForm from "./pages/proyectos/formulario";
 
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
@@ -112,7 +111,7 @@ function App() {
               </Route>
 
               <Route path="/" element={<PublicLayout/>}>
-                <Route path="/" element={<Index />}/>
+                <Route path="/" element={<Index/>}/>
               </Route>
 
               <Route path="/registro" element={<Registro/>} />
