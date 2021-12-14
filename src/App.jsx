@@ -41,7 +41,7 @@ import IndexProyecto from "./pages/admin/proyectos";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://webdev-back.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
