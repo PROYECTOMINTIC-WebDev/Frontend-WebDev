@@ -29,13 +29,13 @@ import Login from "./pages/auth/Login";
 import Registro from "./pages/auth/Registro";
 import Admin from "./pages/admin/Admin";
 import IndexPerfil from "./pages/perfil";
-import Formulario from "./pages/proyectos/formulario";
+// import Formulario from "./pages/proyectos/formulario";
 import ModalCrear from "./pages/admin/proyectos/modalcrear";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
 import AdminIndex from "./pages/admin/AdminIndex";
 import IndexProyecto from "./pages/admin/proyectos";
-import FormularioProyectos from "./pages/admin/proyectos/formulario";
+// import FormularioProyectos from "./pages/admin/proyectos/formulario";
 // import EditarUsuario from "./pages/admin/usuarios/editar";
 
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
@@ -105,7 +105,7 @@ function App() {
         <Route path="/admin" element={<PrivateLayout />}>
           
         <Route path="/admin/crear" element={<ModalCrear />} />
-        <Route path="/admin/Dashboard" element={<Dashboard />} />
+        <Route path="/admin/" element={<Index />} />
         <Route path="/admin/perfil" element={<IndexPerfil />} />
         <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
         <Route path="/admin/proyectos" element={<IndexProyecto />} />
@@ -124,7 +124,7 @@ function App() {
         <Route path="/" element={<Index />} />
      
         </Route>
-        <Route path="/formulario" element={<Formulario />} />   
+        {/* <Route path="/formulario" element={<Formulario />} />    */}
      {/*    <Route path="/login" element={<Login />} /> */}
         <Route path="/registro" element={<Registro />} />
       {/*   <Route path="/admin" element={<Admin />} /> */}
