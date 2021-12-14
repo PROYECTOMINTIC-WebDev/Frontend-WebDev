@@ -79,9 +79,9 @@ const UserIndex = () => {
   return (
     <>
       <NavBarFull titulo="Usuarios :" subtitulo="Lista de Usuarios" />
-
-      <div className="flex justify-center w-10/12">
-        <table className="table">
+      
+      <div className="flex justify-center ml-28 w-10/12 h-5/6 overflow-y-auto ">
+        <table className="tabla  h-full">
           <thead>
             <tr  scope="col" class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-wider dark:text-gray-400">
         {/*       <th className="text-center">Id</th> */}
@@ -101,11 +101,11 @@ const UserIndex = () => {
                 return (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={u._id}>
                     {/* <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white" >{u._id}</td> */}
-                    <td  scope="col" class="text-xs font-medium text-gray-700 px-6 py-3 text-left uppercase tracking-wider dark:text-gray-400">{u.nombre}</td>
+                    <td  scope="col" class="text-xs font-medium text-black px-6 py-3 text-left uppercase tracking-wider dark:text-gray-400">{u.nombre}</td>
                     <td>{u.apellido}</td>
                     <td>{u.correo}</td>
                     <td>{u.identificacion}</td>
-                    <td  class="text-center">{u.rol}</td>
+                    <td  class="">{u.rol}</td>
                     <td>{Enum_EstadoUsuario[u.estado]}</td>
 
                     <td class="pl-6">

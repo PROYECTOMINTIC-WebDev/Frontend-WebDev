@@ -4,12 +4,13 @@ import PrivateComponent from '../../components/PrivateComponent'
 
 const AdminIndex = () => {
     return (
-        <div>
+        <div >
         
         <NavBarFull   titulo="AdminIndex :"  subtitulo="estudiantes" />
         <PrivateComponent    roleList={['LIDER']}>
         <div>
             INDICE DEL MODULO ADMIN
+            
         </div>
         </PrivateComponent>
          

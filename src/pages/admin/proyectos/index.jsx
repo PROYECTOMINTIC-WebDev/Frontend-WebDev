@@ -196,6 +196,7 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
                 <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
                   <i class="fas fa-ellipsis-v  hover:bg-gray-300 rounded-lg   float-right  p-2"></i>
                 </PrivateComponent>
+                // aqui empiezo
               </PrivateComponent>
             </Typography>
 
