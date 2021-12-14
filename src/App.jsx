@@ -35,6 +35,8 @@ import Navbar from "./components/Navbar";
 import IndexProyecto from "./pages/admin/proyectos";
 import IndexPerfil from "./pages/perfil";
 import Formulario from "./pages/proyectos/formulario";
+import ModalCrear from "./pages/admin/proyectos/modalcrear";
+import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
@@ -101,9 +103,10 @@ function App() {
       //ruta privada de administrador
         <Route path="/admin" element={<PrivateLayout />}>
           
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/crear" element={<ModalCrear />} />
         <Route path="/admin/Dashboard" element={<Dashboard />} />
         <Route path="/admin/perfil" element={<IndexPerfil />} />
+        <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
         <Route path="/admin/proyectos" element={<IndexProyecto />} />
         <Route path="/admin/usuarios" element={
         <PrivateRoute  roleList={["ADMINISTRADOR"]}>

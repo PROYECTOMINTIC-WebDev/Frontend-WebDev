@@ -6,7 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import CardHeader from "@mui/material/CardHeader";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Typography from "@mui/material/Typography";
 import PROYECTOS from "../../../graphql/proyectos/queries";
 import { useMutation, useQuery } from "@apollo/client";
@@ -22,8 +22,10 @@ import ButtonLoading from "../../../components/ButtonLoading";
 import { Enum_EstadoProyecto } from "../../../utils/enums";
 import NavBarFull from "../../../components/NavbarTodo";
 import { styled } from "@mui/material/styles";
-import ModalCrear from "../../../components/modalcrear";
 import { EDITAR_PROYECTOS } from "../../../graphql/proyectos/mutations";
+import ModalCrear from "./modalcrear";
+import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 const IndexProyecto = () => {
   const AccordionStyled = styled((props) => <Card {...props} />)(
@@ -57,63 +59,81 @@ const IndexProyecto = () => {
 
   if (queryData.Proyectos) {
     return (
-      <div className="">
+      <>
         <NavBarFull titulo="Proyectos :" subtitulo="Lista de Proyectos" />
 
-        <div className="  overflow-scroll   ">
-          <div className="p-4 grid grid-cols-4 gap-4 m-4    w-auto h-auto">
-            {queryData.Proyectos.map((proyecto) => {
-              return (
-                <>
-                  <CardProyectosAdministrador
-                    key={proyecto._id}
-                    proyecto={proyecto}
-                    abrirmodal={handleClickOpen("paper", proyecto.objetivos)}
-                  />
-                </>
-              );
-            })}
+        <div className="h-screen overflow-scroll  mb-50     ">
+         <div className="absolute z-50 bottom-0 right-0 p-10  float-right  ">
+       
+         <Tooltip title="Crear"
+         >
+        
+         
+         <Link to="/admin/crearproyecto">
+            <i class="fas fa-plus fa-2x   transform hover:scale-110 transition duration-600  h-400   mr-10"></i>
+          </Link>
+          </Tooltip>
+         </div>
+        
+    
+          <div className="   ">
+            <div className="p-4 grid grid-cols-4 gap-3    w-auto h-auto">
+              {queryData.Proyectos.map((proyecto) => {
+                return (
+                  <>
+                    <CardProyectosAdministrador
+                      key={proyecto._id}
+                      proyecto={proyecto}
+                      abrirmodal={handleClickOpen("paper", proyecto.objetivos)}
+                    />
+                  </>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div>
           <div>
-            {/*   <Button onClick={handleClickOpen('paper')}>mmm</Button>
-             */}{" "}
-            <Dialog
-              open={open}
-              onClose={handleClose}
-              scroll={scroll}
-              aria-labelledby="scroll-dialog-title"
-              aria-describedby="scroll-dialog-description"
-            >
-              <DialogTitle
-                id="scroll-dialog-title"
-                class="bg-gray-900   p-5   text-white  font-extralight  text-2xl   shadow-lg"
+            <div>
+              {/*   <Button onClick={handleClickOpen('paper')}>mmm</Button>
+               */}{" "}
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                scroll={scroll}
+                aria-labelledby="scroll-dialog-title"
+                aria-describedby="scroll-dialog-description"
               >
-                lista de Objetivos
-              </DialogTitle>
-              <DialogContent dividers={scroll === "paper"}>
-                <DialogContentText id="scroll-dialog-description" tabIndex={-1}>
-                  <div class="">
-                    {EstadoObjetivo?.map((objetivo) => {
-                      return (
-                        <Objetivos
-                          tipo={objetivo.tipo}
-                          descripcion={objetivo.descripcion}
-                        />
-                      );
-                    })}
-                  </div>
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose}>Cerrar</Button>
-              </DialogActions>
-            </Dialog>
+                <DialogTitle
+                  id="scroll-dialog-title"
+                  class="bg-gray-900   p-5   text-white  font-extralight  text-2xl   shadow-lg"
+                >
+                  lista de Objetivos
+                </DialogTitle>
+                <DialogContent dividers={scroll === "paper"}>
+                  <DialogContentText
+                    id="scroll-dialog-description"
+                    tabIndex={-1}
+                  >
+                    <div class="">
+                      {EstadoObjetivo?.map((objetivo) => {
+                        return (
+                          <Objetivos
+                            tipo={objetivo.tipo}
+                            descripcion={objetivo.descripcion}
+                          />
+                        );
+                      })}
+                    </div>
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cerrar</Button>
+                </DialogActions>
+              </Dialog>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -173,13 +193,8 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
                     setShowDialog(true);
                   }}
                 />
-                <PrivateComponent roleList={["ADMINISTRADOR","LIDER"]}>
-                  <i
-                    class="fas fa-ellipsis-v  hover:bg-gray-300 rounded-lg   float-right  p-2"
-                    
-                  ></i>
-
-              {/*     <button  onClick={ModalCrear(true)}>crear proyecto</button> */}
+                <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+                  <i class="fas fa-ellipsis-v  hover:bg-gray-300 rounded-lg   float-right  p-2"></i>
                 </PrivateComponent>
               </PrivateComponent>
             </Typography>
@@ -228,7 +243,6 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
           <FormEditProyecto _id={proyecto._id} />
         </Dialog>
         {/*     modal de crear proyecto */}
-     
       </div>
     </>
   );
@@ -238,8 +252,7 @@ const FormCrearProyecto = ({ _id }) => {
     <div className="p-4">
       <h1 className="font-bold  shadow-lg">Crear un nuevo Proyecto</h1>
 
-      <br>
-      </br>
+      <br></br>
 
       <label for="">
         <input type="text" placeholder="Nombre del Proyecto" />
@@ -255,9 +268,11 @@ const FormCrearProyecto = ({ _id }) => {
 };
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
-  const [EditarEstadoProyecto, { data: dataMutation, loading, error:mutationError }] =
-    useMutation(EDITAR_PROYECTOS);
- 
+  const [
+    EditarEstadoProyecto,
+    { data: dataMutation, loading, error: mutationError },
+  ] = useMutation(EDITAR_PROYECTOS);
+
   const submitForm = (e) => {
     e.preventDefault();
     EditarEstadoProyecto({
@@ -267,16 +282,14 @@ const FormEditProyecto = ({ _id }) => {
 
   useEffect(() => {
     if (dataMutation) {
-      toast.success('Estado Actualizado con Exito');
+      toast.success("Estado Actualizado con Exito");
     }
   }, [dataMutation]);
 
   useEffect(() => {
     if (mutationError) {
-      toast.error('No se pudo Actualizar el Estado');
+      toast.error("No se pudo Actualizar el Estado");
     }
-
-   
   }, [mutationError]);
   return (
     <div className="p-4">
