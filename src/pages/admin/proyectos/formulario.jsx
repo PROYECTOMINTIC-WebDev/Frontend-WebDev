@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from "../../components/Input";
+import Input from "../../../components/Input.jsx";
 
-const Formulario = () => {
+const FormularioProyectos = () => {
     return (
         <div>
             <h1>Editar proyecto</h1>
@@ -20,4 +20,4 @@ const Formulario = () => {
 };
 
 
-export default Formulario;
+export default FormularioProyectos;

@@ -1,7 +1,5 @@
 import { gql } from '@apollo/client';
 
-
-
 const PROYECTOS = gql `
 query Proyectos {
   Proyectos {
@@ -17,8 +15,6 @@ query Proyectos {
     }
   }
 }
-
-
 `
 
 export default PROYECTOS;

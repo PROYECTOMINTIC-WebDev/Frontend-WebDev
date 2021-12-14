@@ -2,14 +2,14 @@ import React from 'react'
 import NavBarFull from '../../components/NavbarTodo'
 import PrivateComponent from '../../components/PrivateComponent'
 
-const Dashboard = () => {
+const AdminIndex = () => {
     return (
         <div>
         
-        <NavBarFull   titulo="Dashboard :"  subtitulo="estudiantes" />
+        <NavBarFull   titulo="AdminIndex :"  subtitulo="estudiantes" />
         <PrivateComponent    roleList={['LIDER']}>
         <div>
-            DASHBOARD DE LOS NOMBRES DE LOS INTEGRANTES
+            INDICE DEL MODULO ADMIN
         </div>
         </PrivateComponent>
          
@@ -17,4 +17,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default AdminIndex

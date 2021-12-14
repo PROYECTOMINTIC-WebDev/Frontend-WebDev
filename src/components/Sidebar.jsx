@@ -12,14 +12,13 @@ const SidebarLinks = () => {
       
   <ul className='mt-12 p ' >
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
-    <SidebarRoute to='/admin/Dashboard' title='Dashboard' icon='fas fa-home' />
+    <SidebarRoute to='/admin/AdminIndex' title='Home' icon='fas fa-home' />
     </PrivateComponent>
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     </PrivateComponent>
     <SidebarRoute to='/admin/proyectos' title='Proyectos' icon='fas fa-address-card'/>
-    <SidebarRoute to='/admin/' title='otro' icon='fas fa-users '/>
-    <SidebarRoute to='/admin/perfil' title='Perfil' icon='fas fa-users '/>
+    <SidebarRoute to='/admin/perfil' title='Perfil' icon='fas fa-user-edit '/>
   
     
   </ul>
@@ -42,7 +41,7 @@ const Logout = () => {
       <NavLink to='/auth/login' className='  text-gray-500 '>
         <div className=''>
           <i className='fas fa-sign-out-alt' />
-          <span className='text-sm  ml-2   '>Cerrar Sesión</span>
+          <span className='text-sm ml-2'>Cerrar Sesión</span>
         </div>
       </NavLink>
     </div>

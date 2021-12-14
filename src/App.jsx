@@ -1,14 +1,7 @@
-import Index from "./pages/index/Index";
-import Login from "./pages/auth/Login";
-import Admin from "./pages/admin/Admin";
-import ProjectForm from "./pages/proyectos/formulario";
+//Funciones de React y estilos
+import { useState ,useEffect} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './styles/globals.css';
-/* import Adminusers from "./pages/admin/Adminusers"; */
-import PrivateLayout from "./layout/PrivateLayout";
-import AuthLayout from "./layout/AuthLayout";
-import Registro from "./pages/auth/Registro";
-import '@themesberg/flowbite';
+import jwt_decode from 'jwt-decode';
 import {
   ApolloClient,
   InMemoryCache,
@@ -17,26 +10,34 @@ import {
   /* useQuery,
   gql */
 } from "@apollo/client";
-/* import PrivateLayout from "./layout/PrivateLayout";
- */
 import { setContext } from '@apollo/client/link/context';
+import '@themesberg/flowbite';
+import './styles/globals.css';
+// import { Token } from "graphql";
 
-import UserIndex from "./pages/admin/usuarios/userIndex";
-import EditarUsuario from "./pages/admin/usuarios/editar";
-import Dashboard from "./pages/admin/dashboard";
+//Contextos y Layouts
 import { AuthContext } from "./context/authContext";
-import { useState ,useEffect} from "react";
-import { Token } from "graphql";
-import jwt_decode from 'jwt-decode';
 import { UserContext } from "./context/userContext";
 import PrivateRoute from "./components/PrivateRoute";
+import PrivateLayout from "./layout/PrivateLayout";
 import PublicLayout from "./layout/PublicLayout";
-import Navbar from "./components/Navbar";
-import IndexProyecto from "./pages/admin/proyectos";
+import AuthLayout from "./layout/AuthLayout";
+
+//Páginas
+import Index from "./pages/Index";
+import Login from "./pages/auth/Login";
+import Registro from "./pages/auth/Registro";
+import Admin from "./pages/admin/Admin";
 import IndexPerfil from "./pages/perfil";
 import Formulario from "./pages/proyectos/formulario";
 import ModalCrear from "./pages/admin/proyectos/modalcrear";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
+import UserIndex from "./pages/admin/usuarios/userIndex";
+import AdminIndex from "./pages/admin/AdminIndex";
+import IndexProyecto from "./pages/admin/proyectos";
+import FormularioProyectos from "./pages/admin/proyectos/formulario";
+// import EditarUsuario from "./pages/admin/usuarios/editar";
+
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({

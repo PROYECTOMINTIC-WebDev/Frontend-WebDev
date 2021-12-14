@@ -57,10 +57,8 @@ if(loadingMutation  || loadingAuth) return <div>
     <div className='w-full h-full   '>
         <Outlet />
 
-
-       
       </div>
-      <ToastContainer/>
+      <ToastContainer position="bottom-center" autoClose={4000}/>
     </div>
   </div>
   );
