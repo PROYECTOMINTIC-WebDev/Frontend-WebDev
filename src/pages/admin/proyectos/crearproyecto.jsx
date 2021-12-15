@@ -54,15 +54,17 @@ const Crearproyecto = () => {
     if (loading) return <div>...Loading</div>;
   
     return (
-      <div className=' flex flex-col items-center   h-screen w-screen overflow-scroll   mr-10  pr-10   '>
+      
+      <div className=' insert bg-cover flex flex-col items-center   h-screen w-screen overflow-scroll   mr-10  pr-10   '>
+      
         <div className='self-start   pl-10 pt-5  transform hover:scale-110 transition duration-600  h-400   mr-10'>
           <Link to='/admin/proyectos'>
             <i className='fas fa-arrow-left' />
           </Link>
         </div>
-        <h1 className='text-2xl font-bold text-gray-900'>Crear Nuevo Proyecto</h1>
+        <h1 className='text-3xl font-bold text-gray-900 FuzzyBubbles  ml-16 '>Crear Nuevo Proyecto</h1>
         <form
-        className='   items-center  justify-center  '
+        className='   items-center  justify-center  FuzzyBubbles ml-16'
        
         ref={form} onChange={updateFormData} onSubmit={submitForm}>
           <Input name='nombre' label='Nombre del Proyecto' required={true} type='text' />

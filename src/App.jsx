@@ -30,15 +30,20 @@ import Login from "./pages/auth/Login";
 import Registro from "./pages/auth/Registro";
 import Admin from "./pages/admin/Admin";
 import IndexPerfil from "./pages/perfil";
+// import Formulario from "./pages/proyectos/formulario";
+import ModalCrear from "./pages/admin/proyectos/modalcrear";
+import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
 import AdminIndex from "./pages/admin/AdminIndex";
 import IndexProyecto from "./pages/admin/proyectos";
 import FormularioProyectos from "./pages/admin/proyectos/formulario";
+
 // import EditarUsuario from "./pages/admin/usuarios/editar";
 
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
+  uri: 'https://webdev-back.herokuapp.com/graphql',
   uri: 'http://localhost:4000/graphql',
 });
 
@@ -102,6 +107,7 @@ function App() {
                 <Route path="/admin" element= {<Admin/>} />
                 <Route path="/admin/index" element= {<AdminIndex/>}/>
                 <Route path="/admin/perfil" element= {<IndexPerfil/>} />
+                <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
                 <Route path="/admin/proyectos" element= {<IndexProyecto/>} />
                 <Route path="/admin/proyectos/editar" element={<FormularioProyectos/>} />   
                 <Route path="/admin/usuarios" element= {

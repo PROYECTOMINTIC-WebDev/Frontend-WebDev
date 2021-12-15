@@ -47,3 +47,9 @@
     background-color: #90a4ae;
 }
 
+.insert{
+  display: flex;
+  background-image: url(/src/images/insertproyecto.svg);
+  /*background-color: #455a64; /*#455a64*/
+  
+}
