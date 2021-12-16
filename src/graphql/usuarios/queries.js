@@ -2,9 +2,9 @@ import { gql } from '@apollo/client';
 
 //este es el template de grahpql
 const GET_USUARIOS = gql `
-query Usuario {
-  Usuarios {
-    _id
+query Usuarios($filtro: FiltroUsuario) {
+  Usuarios(filtro: $filtro) {
+     _id
     nombre
     apellido
     correo
@@ -12,7 +12,6 @@ query Usuario {
     estado
     rol
   }
-  
 }
 `
 const GET_USUARIO = gql `

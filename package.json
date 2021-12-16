@@ -3,12 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-
         "@apollo/client": "^3.5.5",
         "@craco/craco": "^6.4.1",
         "@emotion/react": "^11.7.0",
         "@emotion/styled": "^11.6.0",
         "@mui/material": "^5.2.3",
+        "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
         "@mui/styled-engine-sc": "^5.1.0",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
@@ -17,6 +17,7 @@
         "graphql": "^16.0.1",
         "i": "^0.3.7",
         "jwt-decode": "^3.1.2",
+        "nanoid": "^3.1.30",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-loading": "^2.0.3",
@@ -24,8 +25,7 @@
         "react-scripts": "4.0.3",
         "react-toastify": "^8.1.0",
         "styled-components": "^5.3.3",
-        "web-vitals": "^1.0.1",
-        "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
+        "web-vitals": "^1.0.1"
     },
     "resolutions": {
         "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
@@ -59,5 +59,4 @@
         "postcss": "^7",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat"
     }
-
 }
