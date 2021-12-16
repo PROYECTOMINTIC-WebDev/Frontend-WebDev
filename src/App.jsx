@@ -38,7 +38,7 @@ import FormularioProyectos from "./pages/admin/proyectos/formulario";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4500/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
