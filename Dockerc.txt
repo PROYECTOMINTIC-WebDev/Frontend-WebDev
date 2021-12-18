@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+
+  back:
+    build:
+      dockerfile: Dockerfile
+      context: './back'
+    ports:
+      - 4000:4000
+    environment:
+      - DATABASE_URL= mongodb+srv://julioe:julioe@gestionproyectosmintic.piuw0.mongodb.net/BDWebDev?retryWrites=true&w=majority
+      - PORT= 4000
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  front:
+    build:
+      dockerfile: Dockerfile
+      context: './front' 
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
