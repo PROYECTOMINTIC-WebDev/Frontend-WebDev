@@ -272,7 +272,8 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
           size="small"
           class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
           >
-            Avances
+            <Link to="/admin/avances"> Avance</Link>
+            
           </Button>
             </CardActions>
             <CardActions>
