@@ -7,7 +7,7 @@ const AdminIndex = () => {
         <div className='FuzzyBubbles'>
         
         <NavBarFull   titulo="BIENVENIDOS"  />
-        <PrivateComponent    roleList={['LIDER']}>
+        
         <div>
          
             
@@ -50,7 +50,7 @@ const AdminIndex = () => {
   
         </svg>
     </div>
-        </PrivateComponent>
+       
          
         </div>
     )

@@ -140,7 +140,7 @@ const UserIndex = () => {
                       onClick={() => setShowModal(false)}
                     >
                       <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                        ×
+                        
                       </span>
                     </button>
                   </div>
