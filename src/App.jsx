@@ -31,12 +31,15 @@ import Registro from "./pages/auth/Registro";
 import Admin from "./pages/admin/Admin";
 import IndexPerfil from "./pages/perfil";
 // import Formulario from "./pages/proyectos/formulario";
-import ModalCrear from "./pages/admin/proyectos/modalcrear";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
 import AdminIndex from "./pages/admin/AdminIndex";
 import IndexProyecto from "./pages/admin/proyectos";
 import FormularioProyectos from "./pages/admin/proyectos/formulario";
+import IndexAvances from "./pages/admin/proyectos/avances/Index";
+import IndexAvances2 from "./pages/admin/proyectos/avances/index2";
+import EditarAvance from "./pages/admin/proyectos/avances/editar";
+import CrearAvance from "./pages/admin/proyectos/avances/crearAvance";
 
 // import EditarUsuario from "./pages/admin/usuarios/editar";
 
@@ -107,6 +110,10 @@ function App() {
                 <Route path="/admin" element= {<Admin/>} />
                 <Route path="/admin/index" element= {<AdminIndex/>}/>
                 <Route path="/admin/perfil" element= {<IndexPerfil/>} />
+                <Route path="/admin/proyectos/avances" element= {<IndexAvances/>} />
+                <Route path="/admin/avances" element= {<IndexAvances2/>} />
+                <Route path="/admin/avances/crear" element={<CrearAvance/>} /> 
+                <Route path="/admin/proyectos/editar" element={<EditarAvance/>} />   
                 <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
                 <Route path="/admin/proyectos" element= {<IndexProyecto/>} />
                 <Route path="/admin/proyectos/editar" element={<FormularioProyectos/>} />   

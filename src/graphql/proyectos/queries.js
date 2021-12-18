@@ -13,6 +13,11 @@ query Proyectos {
       _id
       nombre
     }
+    avances {
+      fecha
+      descripcion
+      observaciones
+    }
   }
 }
 `

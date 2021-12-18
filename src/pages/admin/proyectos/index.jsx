@@ -26,6 +26,8 @@ import { EDITAR_PROYECTOS } from "../../../graphql/proyectos/mutations";
 import ModalCrear from "./modalcrear";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import IndexAvances from "./avances/Index";
+import { FILTRAR_AVANCES } from "../../../graphql/avances/queries";
 
 const IndexProyecto = () => {
   const AccordionStyled = styled((props) => <Card {...props} />)(
@@ -220,6 +222,14 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
             </Typography>
           </CardContent>
           <CardActions>
+          <Button
+          size="small"
+          class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
+          >
+            Avances
+          </Button>
+            </CardActions>
+            <CardActions>
             <Button
               size="small"
               class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
@@ -311,5 +321,6 @@ const FormEditProyecto = ({ _id }) => {
     </div>
   );
 };
+
 
 export default IndexProyecto;
