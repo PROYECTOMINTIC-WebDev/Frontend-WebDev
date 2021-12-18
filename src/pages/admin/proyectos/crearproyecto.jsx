@@ -12,6 +12,8 @@ import useFormData from "../../../hook/useFormData";
 import { Enum_TipoObjetivo } from "../../../utils/enums";
 import { nanoid } from "nanoid";
 import { ObjContext, useObj } from "../../../context/objContext";
+import { toast } from "react-toastify";
+import PROYECTOS from "../../../graphql/proyectos/queries";
 const Crearproyecto = () => {
     const { form, formData, updateFormData } = useFormData();
     const [listaUsuarios, setListaUsuarios] = useState({});
@@ -22,8 +24,12 @@ const Crearproyecto = () => {
     });
   
     const [crearProyecto, { data: mutationData, loading: mutationLoading, error: mutationError }] =
-      useMutation(CREAR_PROYECTO);
-  
+      useMutation(CREAR_PROYECTO, {refetchQueries: [{ query: PROYECTOS }]});
+      useEffect(() => {
+        if (mutationData) {
+          toast.success('proyecto creado con exito');
+        }
+      }, [mutationData]);
     useEffect(() => {
       console.log(data);
       if (data) {
