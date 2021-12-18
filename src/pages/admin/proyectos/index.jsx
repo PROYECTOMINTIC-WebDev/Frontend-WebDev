@@ -268,16 +268,25 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
 
           </CardContent>
           <CardActions>
-         {/*  <Button
+            <Link  to="/admin/avances">
+          
+          <Button
           size="small"
           class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
           >
             Avances
-          </Button> */}
+          </Button> 
+            
+          </Link>
             </CardActions>
             <CardActions>
             <PrivateComponent roleList={["ESTUDIANTE"]}>
-          
+           {/*  <Button
+              size="small"
+              class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
+            >
+              Inscribirme
+            </Button> */}
       
            
             <IncripcionProyecto  idProyecto={proyecto._id}   estado={proyecto.estado}  inscripciones={proyecto.inscripciones}/>

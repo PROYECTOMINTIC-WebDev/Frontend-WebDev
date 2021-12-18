@@ -1,17 +1,24 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ButtonLoading from '../../../../components/ButtonLoading';
 import Dropdown from '../../../../components/Dropdown';
 import Input from '../../../../components/Input'
+import { CREAR_AVANCE } from '../../../../graphql/avances/mutations';
 import PROYECTOS from '../../../../graphql/proyectos/queries';
+import { GET_USUARIOS } from '../../../../graphql/usuarios/queries';
 import useFormData from '../../../../hook/useFormData';
 
 const CrearAvance = () => {
     const {form, formData, updateFormData } = useFormData();
     const [listaProyectos, setListaProyectos] = useState();
 
+
     const {data, loading, error}= useQuery(PROYECTOS);
+
+    const [crearAvance, { data: mutationData, loading: mutationLoading, error: mutationError }] =
+      useMutation(CREAR_AVANCE);
+
     useEffect(() => {
         console.log(data);
         if(data){
@@ -24,9 +31,19 @@ const CrearAvance = () => {
         }
     }, [data]);
 
+
+
+
+    useEffect(() => {
+        console.log('data mutation', mutationData);
+      });
+
     const submitForm = (e) =>{
         e.prevenitDefault();
-        console.log(formData);
+        crearAvance({
+            variables: formData,
+          });
+        
     }
 
     if (loading) return <div>...loading</div>
@@ -46,7 +63,6 @@ const CrearAvance = () => {
                  <Input name="fecha" label="Fecha de creacion de avance" required={true} type="date" />
                  <Input name="descripcion" label="Descripcion" required={true} type="text" />
                  <Dropdown  options={listaProyectos} name="nombre" required={true}  />
-           
                  <ButtonLoading text= "Crear Avance" loading={false} disabled={false} />
 
              </form>

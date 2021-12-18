@@ -21,6 +21,7 @@ const SidebarLinks = () => {
     <SidebarRoute to='/admin/inscripciones' title='Inscripciones' icon='fas fa-users '/>
     </PrivateComponent>
     <SidebarRoute to='/admin/proyectos' title='Proyectos' icon='fas fa-address-card'/>
+    <SidebarRoute to='/admin/avances' title='Avances' icon='fas fa-pen-alt'/>
   
     
   </ul>
