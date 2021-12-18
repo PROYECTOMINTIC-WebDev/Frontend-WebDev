@@ -44,7 +44,7 @@ import FormularioProyectos from "./pages/admin/proyectos/formulario";
 
 const httpLink = createHttpLink({
   uri: 'https://webdev-back.herokuapp.com/graphql',
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4500/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

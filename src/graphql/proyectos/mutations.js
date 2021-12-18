@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 
 
 const EDITAR_PROYECTOS = gql `
-mutation EditarEstadoProyecto($_id: String!, $estado: Enum_EstadoProyecto!,
+mutation EditarEstadoProyecto($_id: String!, $estado: Enum_EstadoProyecto,
  $fase: Enum_FaseProyecto) {
   editarEstadoProyecto(_id: $_id, estado: $estado, fase: $fase) {
     _id
@@ -11,7 +11,20 @@ mutation EditarEstadoProyecto($_id: String!, $estado: Enum_EstadoProyecto!,
     estado
     fase
   }
+},
+
+`
+
+const EDITAR_FASE = gql`
+mutation Mutation($_id: String,  $fase: Enum_FaseProyecto) {
+  editarFaseProyecto(_id: $_id, fase: $fase) {
+    _id
+    fase
+    
+  }
 }
+
+
 `
 
 const CREAR_PROYECTO = gql `
@@ -35,4 +48,4 @@ const CREAR_PROYECTO = gql `
     }
   }
 `;
-export { EDITAR_PROYECTOS, CREAR_PROYECTO };
+export { EDITAR_PROYECTOS, CREAR_PROYECTO,EDITAR_FASE};
