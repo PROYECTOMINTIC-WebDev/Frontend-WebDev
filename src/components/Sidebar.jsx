@@ -12,13 +12,15 @@ const SidebarLinks = () => {
       
   <ul className='mt-12 p ' >
     
-    <SidebarRoute to='/admin/AdminIndex' title='Home' icon='fas fa-home' />
+  <SidebarRoute to='/admin/perfil' title='Perfil' icon='fas fa-user-edit '/>
     
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     </PrivateComponent>
+    <PrivateComponent  roleList={['LIDER']}>
+    <SidebarRoute to='/admin/inscripciones' title='Inscripciones' icon='fas fa-users '/>
+    </PrivateComponent>
     <SidebarRoute to='/admin/proyectos' title='Proyectos' icon='fas fa-address-card'/>
-    <SidebarRoute to='/admin/perfil' title='Perfil' icon='fas fa-user-edit '/>
   
     
   </ul>

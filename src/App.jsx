@@ -33,7 +33,6 @@ import IndexPerfil from "./pages/perfil";
 // import Formulario from "./pages/proyectos/formulario";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
-import AdminIndex from "./pages/admin/AdminIndex";
 import IndexProyecto from "./pages/admin/proyectos";
 import FormularioProyectos from "./pages/admin/proyectos/formulario";
 import IndexAvances from "./pages/admin/proyectos/avances/Index";
@@ -41,13 +40,15 @@ import IndexAvances2 from "./pages/admin/proyectos/avances/index2";
 import EditarAvance from "./pages/admin/proyectos/avances/editar";
 import CrearAvance from "./pages/admin/proyectos/avances/crearAvance";
 
+import IndexInscripciones from "./pages/inscripciones";
+// import FormularioProyectos from "./pages/admin/proyectos/formulario";
 // import EditarUsuario from "./pages/admin/usuarios/editar";
 
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
   //uri: 'https://webdev-back.herokuapp.com/graphql',
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4500/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -116,11 +117,16 @@ function App() {
                 <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
                 <Route path="/admin/proyectos" element= {<IndexProyecto/>} />
                 <Route path="/admin/proyectos/editar" element={<FormularioProyectos/>} />   
-                <Route path="/admin/AdminIndex" element={<AdminIndex/>} />   
+               {/*  <Route path="/admin/AdminIndex" element={<AdminIndex/>} />  */}  
                 <Route path="/admin/usuarios" element= {
                 <PrivateRoute  roleList={["ADMINISTRADOR"]}>
                   <UserIndex />
-                </PrivateRoute>}/>  
+                </PrivateRoute>}/>
+                <Route path="/admin/inscripciones" element={
+          <PrivateRoute roleList={["ADMINISTRADOR","LIDER"]}>
+            <IndexInscripciones />
+          </PrivateRoute>
+        } />  
                 <Route path="/admin/usuarios/:_id" element={<UserIndex />} />
               </Route>
 

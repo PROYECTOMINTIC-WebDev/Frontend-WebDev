@@ -19,6 +19,13 @@ query Proyectos {
       descripcion
       observaciones
     }
+    inscripciones{
+      estado
+      estudiante{
+        _id
+      }
+
+    }
   }
 }
 `

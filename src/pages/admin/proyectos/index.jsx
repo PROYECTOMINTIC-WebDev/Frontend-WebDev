@@ -30,6 +30,9 @@ import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import IndexAvances from "./avances/Index";
 import { FILTRAR_AVANCES } from "../../../graphql/avances/queries";
+import { CREAR_INSCRIPCION } from "../../../graphql/inscripciones/mutations";
+import { log } from "@craco/craco/lib/logger";
+import { useUser } from "../../../context/userContext";
 
 const IndexProyecto = () => {
   const AccordionStyled = styled((props) => <Card {...props} />)(
@@ -71,8 +74,7 @@ const IndexProyecto = () => {
        
          <Tooltip title="Crear"
          >
-        
-         
+               
          <Link to="/admin/crearproyecto">
             <i class="fas fa-plus fa-2x   transform hover:scale-110 transition duration-600  h-400   mr-10"></i>
           </Link>
@@ -177,13 +179,13 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
   };
   return (
     <>
-      <div class=" transform hover:scale-110 transition duration-700  h-400  ">
+      <div class=" transform hover:scale-110 transition duration-700  h-400   mb-8 ">
         <CardStyle
           sx={{ maxWidth: 300 }}
           aria-label="recipe"
           className=" shadow-lg mr-6  mb-5  w-22  transition duration-700   w-200  basic-1/2"
         >
-          <CardContent class="ml-3   mb-12">
+          <CardContent class="ml-3   mb-8">
             <Typography
               gutterBottom
               variant="h12"
@@ -191,9 +193,7 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
               class="text-gray-500 "
             >
               {proyecto.nombre} -{" "}
-              <PrivateComponent roleList={["ADMINISTRADOR"]}>
-
-  
+              <PrivateComponent roleList={["ADMINISTRADOR","LIDER"]}>
                 <i
                   className="ml-2 fas fa-edit text-yellow-600 hover:text-yellow-400"
                   onClick={() => {
@@ -202,7 +202,7 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
                 />
               {/* ESTO SERIA PARA QUE APAREZCA EN EL CARD PARA CAMBIAR LA FASE DEL PROYECTO */}
                 <i
-                  className="ml-2 fas fa-edit text-black-600 hover:text-yellow-400"
+                  className="ml-2 fas fa-marker text-black-600 hover:text-yellow-400"
                   onClick={() => {
                     setShowDialog3(true);
                   }}
@@ -268,20 +268,23 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
 
           </CardContent>
           <CardActions>
-          <Button
+         {/*  <Button
           size="small"
           class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
           >
             Avances
-          </Button>
+          </Button> */}
             </CardActions>
             <CardActions>
-            <Button
-              size="small"
-              class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
-            >
-              Inscribirme
-            </Button>
+            <PrivateComponent roleList={["ESTUDIANTE"]}>
+          
+      
+           
+            <IncripcionProyecto  idProyecto={proyecto._id}   estado={proyecto.estado}  inscripciones={proyecto.inscripciones}/>
+           
+          
+            </PrivateComponent>
+           
             <Button
               size="small"
               class="text-blue-400  font-bold   hover:bg-gray-200 rounded-lg  p-2"
@@ -315,25 +318,51 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
     </>
   );
 };
-const FormCrearProyecto = ({ _id }) => {
-  return (
-    <div className="p-4">
-      <h1 className="font-bold  shadow-lg">Crear un nuevo Proyecto</h1>
+const  IncripcionProyecto=({idProyecto,estado,inscripciones})=>{
+console.log("estas son las inscripciones ",inscripciones)
+  const [crearInscripcion,{data,loading,error}]=useMutation(CREAR_INSCRIPCION,{refetchQueries:{query:PROYECTOS}});
+  const [estadoInscripcion,setEstadoInscripcion]=useState('');
+  const {userData}= useUser();
 
-      <br></br>
+ useEffect(() => {
+   if(userData && inscripciones){
+     const ftl = inscripciones.filter(el=>el.estudiante._id===userData._id);
+     if(ftl.length>0){
+        setEstadoInscripcion(ftl[0].estado)
+     } 
+     console.log("esta es la inscripcion por filtro",ftl)
+   }
+ }, [userData,inscripciones]);
+  useEffect(() => {
+   if(data){
+     console.log(data)
+     toast.success("Inscripcion exitosa")
+   }
+  }, [data])
 
-      <label for="">
-        <input type="text" placeholder="Nombre del Proyecto" />
-      </label>
-      <label for="">
-        <input type="text" placeholder="Nombre del Proyecto" />
-      </label>
-      <label for="">
-        <input type="text" placeholder="Nombre del Proyecto" />
-      </label>
-    </div>
-  );
-};
+  const confirmarInscripcion=()=>{
+    crearInscripcion({variables:{proyecto:idProyecto, estudiante:userData._id}})
+  }
+  return(
+    <>
+    {estadoInscripcion !== '' ? (
+    <span class='text-yellow-700'>Ya estas inscrito y estado {estadoInscripcion} </span>
+    )
+     : (
+
+    <Button 
+    disabled={estado==="ACTIVO"?false:true}
+    onClick={()=>confirmarInscripcion()}
+    >
+      Inscribirme
+    </Button>
+    
+  )}
+  </>
+  )
+}
+
+
 const FormEditProyecto = ({ _id }) => {
   const { form, formData, updateFormData } = useFormData();
   const [
