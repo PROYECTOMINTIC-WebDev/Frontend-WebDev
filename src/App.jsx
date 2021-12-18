@@ -33,8 +33,8 @@ import IndexPerfil from "./pages/perfil";
 import ModalCrear from "./pages/admin/proyectos/modalcrear";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
-import AdminIndex from "./pages/admin/AdminIndex";
 import IndexProyecto from "./pages/admin/proyectos";
+import IndexInscripciones from "./pages/inscripciones";
 // import FormularioProyectos from "./pages/admin/proyectos/formulario";
 // import EditarUsuario from "./pages/admin/usuarios/editar";
 
@@ -105,10 +105,15 @@ function App() {
         <Route path="/admin" element={<PrivateLayout />}>
           
         <Route path="/admin/crear" element={<ModalCrear />} />
-        <Route path="/admin/" element={<Index />} />
+        
         <Route path="/admin/perfil" element={<IndexPerfil />} />
         <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
         <Route path="/admin/proyectos" element={<IndexProyecto />} />
+        <Route path="/admin/inscripciones" element={
+          <PrivateRoute roleList={["ADMINISTRADOR","LIDER"]}>
+            <IndexInscripciones />
+          </PrivateRoute>
+        } />
         <Route path="/admin/usuarios" element={
         <PrivateRoute  roleList={["ADMINISTRADOR"]}>
         <UserIndex />

@@ -13,6 +13,12 @@ query Proyectos {
       _id
       nombre
     }
+    inscripciones{
+      estado
+      estudiante{
+        _id
+      }
+    }
   }
 }
 `

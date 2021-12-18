@@ -33,7 +33,7 @@ const Login = () => {
     if (dataMutation) {
       if (dataMutation.login.token) {
         setToken(dataMutation.login.token);
-        navigate("/admin/AdminIndex");
+        navigate("/admin");
       }
      if (dataMutation.login.error) {
       console.log("eerr",dataMutation.login.error);
