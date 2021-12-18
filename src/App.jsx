@@ -31,6 +31,7 @@ import Registro from "./pages/auth/Registro";
 import Admin from "./pages/admin/Admin";
 import IndexPerfil from "./pages/perfil";
 // import Formulario from "./pages/proyectos/formulario";
+import ModalCrear from "./pages/admin/proyectos/modalcrear";
 import Crearproyecto from "./pages/admin/proyectos/crearproyecto";
 import UserIndex from "./pages/admin/usuarios/userIndex";
 import AdminIndex from "./pages/admin/AdminIndex";
@@ -110,6 +111,7 @@ function App() {
                 <Route path="/admin" element= {<Admin/>} />
                 <Route path="/admin/index" element= {<AdminIndex/>}/>
                 <Route path="/admin/perfil" element= {<IndexPerfil/>} />
+                
                 <Route path="/admin/proyectos/avances" element= {<IndexAvances/>} />
                 <Route path="/admin/avances" element= {<IndexAvances2/>} />
                 <Route path="/admin/avances/crear" element={<CrearAvance/>} /> 
