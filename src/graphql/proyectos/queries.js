@@ -6,6 +6,7 @@ query Proyectos {
     _id
     nombre
     estado
+    fase
     objetivos {
       descripcion
       tipo

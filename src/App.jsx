@@ -47,7 +47,7 @@ import CrearAvance from "./pages/admin/proyectos/avances/crearAvance";
 <script src="../path/to/@themesberg/flowbite/dist/flowbite.bundle.js"></script>
 
 const httpLink = createHttpLink({
-  uri: 'https://webdev-back.herokuapp.com/graphql',
+  //uri: 'https://webdev-back.herokuapp.com/graphql',
   uri: 'http://localhost:4000/graphql',
 });
 
@@ -109,7 +109,6 @@ function App() {
             <Routes>
               <Route path="/admin" element= {<PrivateLayout/>}>
                 <Route path="/admin" element= {<Admin/>} />
-                <Route path="/admin/index" element= {<AdminIndex/>}/>
                 <Route path="/admin/perfil" element= {<IndexPerfil/>} />
                 
                 <Route path="/admin/proyectos/avances" element= {<IndexAvances/>} />
@@ -119,6 +118,7 @@ function App() {
                 <Route path="/admin/crearproyecto" element={<Crearproyecto />} />
                 <Route path="/admin/proyectos" element= {<IndexProyecto/>} />
                 <Route path="/admin/proyectos/editar" element={<FormularioProyectos/>} />   
+                <Route path="/admin/AdminIndex" element={<AdminIndex/>} />   
                 <Route path="/admin/usuarios" element= {
                 <PrivateRoute  roleList={["ADMINISTRADOR"]}>
                   <UserIndex />

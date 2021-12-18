@@ -11,9 +11,9 @@ const SidebarLinks = () => {
    <div>
       
   <ul className='mt-12 p ' >
-    <PrivateComponent  roleList={['ADMINISTRADOR']}>
+    
     <SidebarRoute to='/admin/AdminIndex' title='Home' icon='fas fa-home' />
-    </PrivateComponent>
+    
     <PrivateComponent  roleList={['ADMINISTRADOR']}>
     <SidebarRoute to='/admin/usuarios' title='Usuarios' icon='fas fa-users '/>
     </PrivateComponent>
@@ -38,7 +38,7 @@ const Logout = () => {
     setToken('');
   };
   return (
-    <div onClick={() => deleteToken()}  className=" absolute bottom-11   hover:bg-gray-400  rounded-lg p-2">
+    <div onClick={() => deleteToken()}  className=" absolute bottom-11   hover:bg-white rounded-lg p-2">
       <NavLink to='/auth/login' className='  text-gray-500 '>
         <div className=''>
           <i className='fas fa-sign-out-alt' />

@@ -19,10 +19,12 @@ import PrivateComponent from "../../../components/PrivateComponent";
 import useFormData from "../../../hook/useFormData";
 import Dropdown from "../../../components/Dropdown";
 import ButtonLoading from "../../../components/ButtonLoading";
-import { Enum_EstadoProyecto } from "../../../utils/enums";
+import { Enum_EstadoProyecto} from "../../../utils/enums";
+import { Enum_FaseProyecto} from "../../../utils/enums";
 import NavBarFull from "../../../components/NavbarTodo";
 import { styled } from "@mui/material/styles";
 import { EDITAR_PROYECTOS } from "../../../graphql/proyectos/mutations";
+import { EDITAR_FASE } from "../../../graphql/proyectos/mutations";
 import ModalCrear from "./modalcrear";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
@@ -155,6 +157,7 @@ const Objetivos = ({ tipo, descripcion }) => {
 const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
   const [showDialog, setShowDialog] = useState(false);
   const [showDialog2, setShowDialog2] = useState(false);
+  const [showDialog3, setShowDialog3] = useState(false);
   const CardStyle = styled((props) => {
     const { expand, ...other } = props;
     return <Card {...other} />;
@@ -189,37 +192,80 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
             >
               {proyecto.nombre} -{" "}
               <PrivateComponent roleList={["ADMINISTRADOR"]}>
+
+  
                 <i
                   className="ml-2 fas fa-edit text-yellow-600 hover:text-yellow-400"
                   onClick={() => {
                     setShowDialog(true);
                   }}
                 />
+              {/* ESTO SERIA PARA QUE APAREZCA EN EL CARD PARA CAMBIAR LA FASE DEL PROYECTO */}
+                <i
+                  className="ml-2 fas fa-edit text-black-600 hover:text-yellow-400"
+                  onClick={() => {
+                    setShowDialog3(true);
+                  }}
+                />
+
+                
                 <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
                   <i class="fas fa-ellipsis-v  hover:bg-gray-300 rounded-lg   float-right  p-2"></i>
                 </PrivateComponent>
+
+                
                 
               </PrivateComponent>
             </Typography>
-
+       
             <Typography variant="body2" color="text.secondary">
               <div className="  ">
                 <div className="pt-2 pb-2">
                   <span class=" text-gray-700 "> LIDER:</span>{" "}
                   {proyecto.lider.nombre}
+
                 </div>
-                {proyecto.estado === "ACTIVO" ? (
-                  <span class=" display-none bg-green-500 rounded-2xl   text-white p-1 ">
-                    {proyecto.estado}
-                  </span>
-                ) : (
-                  <span class=" display-none bg-red-500 rounded-2xl   text-white p-1  ">
-                    {proyecto.estado}
-                  </span>
-                )}
-                <div></div>
+
+                <div>
+
+                  {proyecto.estado === "ACTIVO" ? (
+                      <span class=" display-none bg-green-500 rounded-2xl   text-white p-1 ">
+                        {proyecto.estado}
+                      </span>
+                    ) : (
+                      <span class=" display-none bg-red-500 rounded-2xl   text-white p-1  ">
+                        {proyecto.estado}
+                      </span>
+                    )}
+
+                    <br></br>
+                    <br></br>
+
+                    {proyecto.fase === "DESARROLLO" ? (
+                      <span class=" display-none bg-yellow-300 rounded-2xl   text-white p-1 ">
+                        {proyecto.fase}
+                      </span>
+                    ) : (
+                      <span class=" display-none bg-blue-500 rounded-2xl   text-white p-1  ">
+                        {proyecto.fase}
+                      </span>
+                    )}
+
+                </div>
+                  
               </div>
+              <br></br>
+
+             { /*PROBANDO PARA LA FASE*/}
+
+             
             </Typography>
+
+           
+
+
+
+
           </CardContent>
           <CardActions>
           <Button
@@ -252,7 +298,18 @@ const CardProyectosAdministrador = ({ proyecto, abrirmodal }) => {
           }}
         >
           <FormEditProyecto _id={proyecto._id} />
+
         </Dialog>
+        {/*  ESTO ES PARA LA FASE DEL PROYECTO */}
+        <Dialog
+          open={showDialog3}
+          onClose={() => {
+            setShowDialog3(false);
+          }}
+        >
+          <FormEditarFaseProyecto _id={proyecto._id} />
+        </Dialog>
+
         {/*     modal de crear proyecto */}
       </div>
     </>
@@ -322,5 +379,54 @@ const FormEditProyecto = ({ _id }) => {
   );
 };
 
+
+/* PARA CAMBIAR LA FASE */
+
+const FormEditarFaseProyecto = ({ _id }) => {
+  const { form, formData, updateFormData } = useFormData();
+  const [
+    EditarFaseProyecto,
+    { data: dataMutation, loading, error: mutationError },
+  ] = useMutation(EDITAR_FASE);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    EditarFaseProyecto({
+      variables: { _id, ...formData },
+    });
+  };
+
+  useEffect(() => {
+    if (dataMutation) {
+      toast.success('Fase actualizada con éxito');
+    }
+  }, [dataMutation]);
+
+  useEffect(() => {
+    if (mutationError) {
+      toast.error('No se pudo actualizar la fase del proyecto');
+    }
+  }, [mutationError]);
+  return (
+    <div className="p-4">
+      <h1 className="font-bold">Modificar Fase del Proyecto</h1>
+      <form
+        ref={form}
+        onChange={updateFormData}
+        onSubmit={submitForm}
+        className="flex flex-col items-center"
+      >
+        <Dropdown
+          label="Fase del Proyecto"
+          name="fase"
+          options={Enum_FaseProyecto}
+        />
+        <ButtonLoading disabled={false} loading={loading} text="Confirmar" />
+      </form>
+    </div>
+  );
+};
+
+/*FIN  */
 
 export default IndexProyecto;
